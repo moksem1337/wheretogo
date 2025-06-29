@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чем заняться в Белгороде?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Handlee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -47,33 +47,6 @@
             margin-bottom: 30px;
             text-transform: uppercase;
             text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .click-hint {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .click-hint .hand {
-            font-family: 'Handlee', cursive;
-            color: white;
-            font-size: 40px;
-            margin-bottom: 10px;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .click-hint img {
-            width: 70px;
-            position: absolute;
-            top: -50px;
-            left: -80px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
         }
 
         #generateBtn {
@@ -162,16 +135,6 @@
                 font-size: 32px;
             }
 
-            .click-hint .hand {
-                font-size: 28px;
-            }
-
-            .click-hint img {
-                width: 50px;
-                top: -40px;
-                left: -60px;
-            }
-
             .logo {
                 bottom: 20px;
                 max-width: 120px;
@@ -201,10 +164,6 @@
 <body>
     <div class="wrapper">
         <h1>Чем заняться в Белгороде?</h1>
-        <div class="click-hint">
-            <div class="hand">ЖМИ</div>
-            <img src="https://i.postimg.cc/9rtJUzdj/arrow.png" alt="arrow">
-        </div>
         <button id="generateBtn">Узнать</button>
         <img src="https://files.1mi.media/68054524dd3e82b8a03e0a643b146eab2c25db35/resize:auto:0:0:0/c046dc8131516e818f8018f5d140e4233ff4b11b5fbcfce6f850108c6374.svg" alt="Logo" class="logo">
     </div>
@@ -216,8 +175,8 @@
     </div>
 
     <script>
-        const places = [/* Места (оставляем те, что у тебя были) */];
-        const actions = [/* Действия (оставляем те, что у тебя были) */];
+        const places = [/* Твои места сюда */];
+        const actions = [/* Твои действия сюда */];
 
         const generateBtn = document.getElementById('generateBtn');
         const popup = document.getElementById('popup');
