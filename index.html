@@ -49,6 +49,20 @@
             text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
         }
 
+        .pulse-arrow {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-180%, -130%);
+            width: 70px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-180%, -130%) scale(1); }
+            50% { transform: translate(-180%, -130%) scale(1.2); }
+        }
+
         #generateBtn {
             padding: 18px 35px;
             font-size: 24px;
@@ -135,14 +149,19 @@
                 font-size: 32px;
             }
 
-            .logo {
-                bottom: 20px;
-                max-width: 120px;
+            .pulse-arrow {
+                width: 50px;
+                transform: translate(-150%, -130%);
             }
 
             #generateBtn {
                 padding: 14px 25px;
                 font-size: 20px;
+            }
+
+            .logo {
+                bottom: 20px;
+                max-width: 120px;
             }
 
             .popup {
@@ -164,6 +183,7 @@
 <body>
     <div class="wrapper">
         <h1>Чем заняться в Белгороде?</h1>
+        <img src="https://i.postimg.cc/9rtJUzdj/arrow.png" alt="arrow" class="pulse-arrow">
         <button id="generateBtn">Узнать</button>
         <img src="https://files.1mi.media/68054524dd3e82b8a03e0a643b146eab2c25db35/resize:auto:0:0:0/c046dc8131516e818f8018f5d140e4233ff4b11b5fbcfce6f850108c6374.svg" alt="Logo" class="logo">
     </div>
@@ -175,8 +195,8 @@
     </div>
 
     <script>
-        const places = [/* Твои места сюда */];
-        const actions = [/* Твои действия сюда */];
+        const places = [/* Вставь сюда свои места */];
+        const actions = [/* Вставь сюда свои действия */];
 
         const generateBtn = document.getElementById('generateBtn');
         const popup = document.getElementById('popup');
