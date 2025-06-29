@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,14 +42,44 @@
             box-sizing: border-box;
         }
 
-        .logo {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            max-width: 150px;
-            height: auto;
-            z-index: 2;
+        h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .subtitle {
+            color: white;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .arrow {
+            font-size: 40px;
+            color: white;
+            animation: pulse 1.5s infinite;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         #generateBtn {
@@ -68,6 +99,16 @@
         #generateBtn:hover {
             transform: scale(1.1);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 150px;
+            height: auto;
+            z-index: 2;
         }
 
         .popup {
@@ -124,6 +165,18 @@
         }
 
         @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .subtitle {
+                font-size: 20px;
+            }
+
+            .arrow {
+                font-size: 30px;
+            }
+
             .logo {
                 bottom: 20px;
                 max-width: 120px;
@@ -150,8 +203,12 @@
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
+        <h1>Скучаешь в Белгороде?</h1>
+        <div class="subtitle">ЖМИ</div>
+        <div class="arrow">⬇️</div>
         <button id="generateBtn">Чем заняться?</button>
         <img src="https://files.1mi.media/68054524dd3e82b8a03e0a643b146eab2c25db35/resize:auto:0:0:0/c046dc8131516e818f8018f5d140e4233ff4b11b5fbcfce6f850108c6374.svg" alt="Logo" class="logo">
     </div>
@@ -226,4 +283,5 @@
         });
     </script>
 </body>
+
 </html>
