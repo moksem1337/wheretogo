@@ -1,149 +1,278 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Чем заняться?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&family=Handlee&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      font-family: 'Rubik', sans-serif;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: url('https://a.imgfoto.host/2025/06/29/FON.jpeg') no-repeat center center;
-      background-size: cover;
-    }
-    body::before {
-      content:"";
-      position:absolute;top:0;left:0;width:100%;height:100%;
-      background:inherit;filter:blur(2px);z-index:-1;
-    }
-    .wrapper {
-      text-align:center;position:relative;z-index:1;
-      width:100%;padding:0 20px;box-sizing:border-box;
-    }
-    h1 {
-      color:white;font-size:32px;font-weight:700;
-      margin-bottom:10px;text-transform:uppercase;
-      text-shadow:2px 2px 8px rgba(0,0,0,0.7);
-    }
-    .click-hint {
-      display:flex; flex-direction: column; align-items: center;
-      margin-bottom:10px;
-    }
-    .click-hint .hand {
-      font-family:'Handlee', cursive;
-      color:white;font-size:24px;
-      margin-bottom:5px;
-      text-shadow:2px 2px 8px rgba(0,0,0,0.7);
-    }
-    .click-hint img {
-      width:48px;
-      animation:pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0%,100%{transform:scale(1);}
-      50%{transform:scale(1.2);}
-    }
-    #generateBtn {
-      padding:18px 35px;font-size:20px;font-weight:700;
-      cursor:pointer;border:none;border-radius:25px;
-      background:linear-gradient(90deg,rgba(72,187,120,0.9) 0%,rgba(91,214,132,0.9) 100%);
-      color:white;transition:transform .3s ease, box-shadow .3s ease;
-      box-shadow:0 8px 15px rgba(0,0,0,0.3);
-    }
-    #generateBtn:hover {
-      transform:scale(1.1);
-      box-shadow:0 12px 20px rgba(0,0,0,0.4);
-    }
-    .logo {
-      position:fixed;bottom:40px;left:50%;
-      transform:translateX(-50%);max-width:150px;
-      height:auto;z-index:2;
-    }
-    .popup {
-      display:none;position:absolute;
-      top:50%;left:50%;transform:translate(-50%,-50%);
-      background:rgba(255,255,255,0.95);padding:25px;
-      border-radius:15px;box-shadow:0 10px 20px rgba(0,0,0,0.3);
-      text-align:center;max-width:85%;z-index:2;
-    }
-    .popup p {
-      font-size:20px;color:#1a2a44;
-      margin-bottom:20px;font-weight:700;
-    }
-    .popup button {
-      padding:12px 25px;font-size:18px;
-      font-weight:700;cursor:pointer;border:none;
-      border-radius:20px;margin:5px;
-      transition:transform .3s ease, box-shadow .3s ease;
-    }
-    .popup button#generateMoreBtn {
-      background:linear-gradient(90deg,rgba(0,172,237,0.9) 0%,rgba(0,199,255,0.9) 100%);
-      color:white;
-    }
-    .popup button#generateMoreBtn:hover {
-      transform:scale(1.1);
-      box-shadow:0 8px 15px rgba(0,0,0,0.2);
-    }
-    .popup button#closeBtn {
-      background:linear-gradient(90deg,rgba(255,99,71,0.9) 0%,rgba(255,130,101,0.9) 100%);
-      color:white;
-    }
-    .popup button#closeBtn:hover {
-      transform:scale(1.1);
-      box-shadow:0 8px 15px rgba(0,0,0,0.2);
-    }
-    @media(max-width:600px){
-      h1{font-size:24px;}
-      .click-hint .hand{font-size:20px;}
-      .click-hint img{width:36px;}
-      .logo{bottom:20px;max-width:120px;}
-      #generateBtn{padding:14px 25px;font-size:18px;}
-      .popup{padding:20px;max-width:90%;}
-      .popup p{font-size:18px;}
-      .popup button{padding:10px 20px;font-size:16px;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чем заняться?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&family=Handlee&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Rubik', sans-serif;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://a.imgfoto.host/2025/06/29/FON.jpeg') no-repeat center center;
+            background-size: cover;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(2px);
+            z-index: -1;
+        }
+
+        .wrapper {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: white;
+            font-size: 50px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .click-hint {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .click-hint .hand {
+            font-family: 'Handlee', cursive;
+            color: white;
+            font-size: 40px;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .click-hint img {
+            width: 60px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        #generateBtn {
+            padding: 18px 35px;
+            font-size: 24px;
+            font-weight: 900;
+            cursor: pointer;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(90deg, rgba(72, 187, 120, 0.9) 0%, rgba(91, 214, 132, 0.9) 100%);
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #generateBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 150px;
+            height: auto;
+            z-index: 2;
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 85%;
+            z-index: 2;
+        }
+
+        .popup p {
+            font-size: 20px;
+            color: #1a2a44;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .popup button {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 900;
+            cursor: pointer;
+            border: none;
+            border-radius: 20px;
+            margin: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .popup button#generateMoreBtn {
+            background: linear-gradient(90deg, rgba(0, 172, 237, 0.9) 0%, rgba(0, 199, 255, 0.9) 100%);
+            color: white;
+        }
+
+        .popup button#generateMoreBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup button#closeBtn {
+            background: linear-gradient(90deg, rgba(255, 99, 71, 0.9) 0%, rgba(255, 130, 101, 0.9) 100%);
+            color: white;
+        }
+
+        .popup button#closeBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .click-hint .hand {
+                font-size: 28px;
+            }
+
+            .click-hint img {
+                width: 50px;
+            }
+
+            .logo {
+                bottom: 20px;
+                max-width: 120px;
+            }
+
+            #generateBtn {
+                padding: 14px 25px;
+                font-size: 20px;
+            }
+
+            .popup {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .popup p {
+                font-size: 18px;
+            }
+
+            .popup button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1>Скучаешь в Белгороде?</h1>
-    <div class="click-hint">
-      <div class="hand">ЖМИ</div>
-      <img src="https://i.imgur.com/yourArrow.png" alt="arrow">
+    <div class="wrapper">
+        <h1>Скучаешь в Белгороде?</h1>
+        <div class="click-hint">
+            <div class="hand">ЖМИ</div>
+            <img src="https://i.yapx.ru/ZqkCV.png" alt="arrow">
+        </div>
+        <button id="generateBtn">Чем заняться?</button>
+        <img src="https://files.1mi.media/68054524dd3e82b8a03e0a643b146eab2c25db35/resize:auto:0:0:0/c046dc8131516e818f8018f5d140e4233ff4b11b5fbcfce6f850108c6374.svg" alt="Logo" class="logo">
     </div>
-    <button id="generateBtn">Чем заняться?</button>
-    <img src="https://files.1mi.media/68054524dd3e82b8a03e0a643b146eab2c25db35/...svg" alt="Logo" class="logo">
-  </div>
-  <div class="popup" id="popup">
-    <p id="result"></p>
-    <button id="generateMoreBtn">Сгенерировать ещё</button>
-    <button id="closeBtn">Закрыть</button>
-  </div>
-  <script>
-    const places=[/* места */];
-    const actions=[/* действия */];
-    const generateBtn=document.getElementById('generateBtn');
-    const popup=document.getElementById('popup');
-    const result=document.getElementById('result');
-    const generateMoreBtn=document.getElementById('generateMoreBtn');
-    const closeBtn=document.getElementById('closeBtn');
-    function getRandomItem(a){return a[Math.floor(Math.random()*a.length)];}
-    function generateActivity(){
-      result.textContent=`${getRandomItem(actions)} в ${getRandomItem(places)}`;
-    }
-    generateBtn.addEventListener('click',()=>{
-      generateActivity();
-      popup.style.display='block';
-    });
-    generateMoreBtn.addEventListener('click',generateActivity);
-    closeBtn.addEventListener('click',()=>popup.style.display='none');
-  </script>
+
+    <div class="popup" id="popup">
+        <p id="result"></p>
+        <button id="generateMoreBtn">Сгенерировать ещё</button>
+        <button id="closeBtn">Закрыть</button>
+    </div>
+
+    <script>
+        const places = [
+            "Пикник-парк", "Зоопарк", "Набережная Везёлки", "Парк Победы",
+            "Центральный парк", "Пляж «Берега»", "МегаГринн", "СитиМолл",
+            "РИО", "Калейдоскоп", "Сосновка", "Парковка МегаГринна",
+            "Парковка СитиМолла", "Парковка РИО", "Парковка Калейдоскопа",
+            "Архиерейская Роща", "Монастырский Лес", "Парк им. Гагарина",
+            "Скаймека у подъезда", "Пушкинская аллея", "Центральный рынок",
+            "Городская библиотека", "Крейда", "Смотровая площадка", "Рынок Салют",
+            "Белгородский Арбат", "Пляж «Лазурный»", "Пляж «Островок»",
+            "Художественный музей", "Ботанический сад БелГУ", "Любимая кофейня",
+            "Любимый ресторан", "Сквер Дружбы", "Парк Котофей",
+            "Пляж за УСК Хоркиной", "ЛЭП Герб Белгорода", "ЦМИ", "Пруд Болтушка",
+            "Меловые горы", "Парк Дуба", "Автовокзал", "ЖД вокзал",
+            "Ячневский пруд", "Южный парк", "Белгород Арена", "Стометровка",
+            "Любимый кинотеатр", "Южный сквер", "Роллердром", "Уксусное дерево",
+            "Любимая пиццерия", "Спортивная площадка", "Спортивный зал", "Бассейн",
+            "Скейтпарк", "Канатный парк"
+        ];
+
+        const actions = [
+            "Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде",
+            "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате",
+            "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками",
+            "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат",
+            "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах",
+            "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем",
+            "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры",
+            "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег",
+            "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик",
+            "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист",
+            "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"
+        ];
+
+        const generateBtn = document.getElementById('generateBtn');
+        const popup = document.getElementById('popup');
+        const result = document.getElementById('result');
+        const generateMoreBtn = document.getElementById('generateMoreBtn');
+        const closeBtn = document.getElementById('closeBtn');
+
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function generateActivity() {
+            const place = getRandomItem(places);
+            const action = getRandomItem(actions);
+            result.textContent = `${action} в ${place}`;
+        }
+
+        generateBtn.addEventListener('click', () => {
+            generateActivity();
+            popup.style.display = 'block';
+        });
+
+        generateMoreBtn.addEventListener('click', () => {
+            generateActivity();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
