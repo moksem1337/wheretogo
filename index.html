@@ -51,16 +51,15 @@
 
         .pulse-arrow {
             position: absolute;
-            left: 50%;
-            top: 75%;
-            transform: translate(-50%, 0%);
-            width: 70px;
+            left: 39%; /* Сдвинул левее с 40% до 39% */
+            top: 55%;
+            width: 100px;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translate(-50%, 0%) scale(1); }
-            50% { transform: translate(-50%, 0%) scale(1.2); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
 
         #generateBtn {
@@ -150,8 +149,9 @@
             }
 
             .pulse-arrow {
-                width: 50px;
-                top: 80%;
+                width: 70px;
+                top: 60%;
+                left: 34%; /* Сдвинул левее с 35% до 34% */
             }
 
             #generateBtn {
