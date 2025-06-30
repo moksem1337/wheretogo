@@ -51,7 +51,7 @@
 
         .pulse-arrow {
             position: absolute;
-            left: 30%; /* Сдвинул левее с 32% на 2%, итого 30% */
+            left: 30%;
             top: 55%;
             width: 100px;
             animation: pulse 1.5s infinite;
@@ -96,7 +96,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -105,11 +105,68 @@
             z-index: 2;
         }
 
-        .popup p {
+        .popup .case-animation {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .popup .case-animation img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        .popup .case-animation img.show {
+            opacity: 1;
+        }
+
+        .popup .case-animation::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            animation: openCase 2s ease-out forwards;
+        }
+
+        @keyframes openCase {
+            0% { top: -100%; }
+            70% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        .popup p.typing {
+            border-right: 2px solid #1a2a44;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
             font-size: 20px;
             color: #1a2a44;
             margin-bottom: 20px;
             font-weight: 900;
+            animation: typing 2s steps(30, end) forwards, blink 0.7s infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0% { border-color: transparent; }
+            50% { border-color: #1a2a44; }
+            100% { border-color: transparent; }
         }
 
         .popup button {
@@ -151,7 +208,7 @@
             .pulse-arrow {
                 width: 70px;
                 top: 60%;
-                left: 25%; /* Сдвинул левее с 27% на 2%, итого 25% */
+                left: 25%;
             }
 
             #generateBtn {
@@ -169,8 +226,9 @@
                 max-width: 90%;
             }
 
-            .popup p {
-                font-size: 18px;
+            .popup .case-animation {
+                width: 150px;
+                height: 150px;
             }
 
             .popup button {
@@ -189,42 +247,72 @@
     </div>
 
     <div class="popup" id="popup">
+        <div class="case-animation">
+            <img src="" alt="Place Image" id="placeImage">
+        </div>
         <p id="result"></p>
         <button id="generateMoreBtn">Сгенерировать ещё</button>
         <button id="closeBtn">Закрыть</button>
     </div>
 
     <script>
-        const places = [/* Вставь сюда свои места */];
-        const actions = [/* Вставь сюда свои действия */];
+        const places = ["Парк Победы", "Набережная", "Центральный парк", "Сосновка", "Пляж Берега", "Белгородский Арбат"];
+        const actions = ["Прогуляться", "Пикник", "Йога", "Велосипед", "Фрисби", "Ролики"];
+        const placeImages = [
+            "https://example.com/park.jpg",
+            "https://example.com/naberezhnaya.jpg",
+            "https://example.com/centralpark.jpg",
+            "https://example.com/sosnovka.jpg",
+            "https://example.com/beach.jpg",
+            "https://example.com/arbats.jpg"
+        ];
 
-        const generateBtn = document.getElementById('generateBtn');
         const popup = document.getElementById('popup');
         const result = document.getElementById('result');
         const generateMoreBtn = document.getElementById('generateMoreBtn');
         const closeBtn = document.getElementById('closeBtn');
+        const placeImage = document.getElementById('placeImage');
 
         function getRandomItem(array) {
             return array[Math.floor(Math.random() * array.length)];
         }
 
-        function generateActivity() {
-            const place = getRandomItem(places);
-            const action = getRandomItem(actions);
-            result.textContent = `${action} в ${place}`;
+        function openCase() {
+            const randomAction = getRandomItem(actions);
+            const randomPlace = getRandomItem(places);
+            const randomImageIndex = places.indexOf(randomPlace);
+            const imageUrl = placeImages[randomImageIndex] || "";
+            const fullText = `${randomAction} в ${randomPlace}`;
+
+            // Сброс
+            result.textContent = "";
+            result.classList.remove('typing');
+            placeImage.classList.remove('show');
+            placeImage.src = imageUrl;
+
+            placeImage.classList.add('show');
+
+            // Печатная машинка
+            result.textContent = fullText;
+            result.classList.add('typing');
         }
 
+        const generateBtn = document.getElementById('generateBtn');
         generateBtn.addEventListener('click', () => {
-            generateActivity();
+            openCase();
             popup.style.display = 'block';
         });
 
         generateMoreBtn.addEventListener('click', () => {
-            generateActivity();
+            openCase();
         });
 
         closeBtn.addEventListener('click', () => {
             popup.style.display = 'none';
+            result.textContent = "";
+            result.classList.remove('typing');
+            placeImage.classList.remove('show');
+            placeImage.src = "";
         });
     </script>
 </body>
