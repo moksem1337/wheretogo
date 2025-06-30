@@ -33,7 +33,7 @@
 
         .wrapper {
             text-align: center;
-            position: relative;
+            position: relative; /* Добавлено для корректного позиционирования внутри мини-апп */
             z-index: 1;
             width: 100%;
             padding: 0 20px;
@@ -52,7 +52,7 @@
         .pulse-arrow {
             position: absolute;
             left: 30%;
-            top: 48%; /* Опущена ещё ниже */
+            top: 55%; /* Опущена ниже */
             width: 100px;
             animation: pulse 1.5s infinite;
         }
@@ -180,7 +180,7 @@
 
             .pulse-arrow {
                 width: 70px;
-                top: 45%;
+                top: 55%; /* Корректировка для мобильных */
                 left: 25%;
             }
 
