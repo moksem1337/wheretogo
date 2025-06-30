@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,14 +53,20 @@
         .pulse-arrow {
             position: absolute;
             left: 30%;
-            top: 65%;
+            top: 50%;
             width: 100px;
             animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
         }
 
         #generateBtn {
@@ -215,6 +222,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <h1>Чем заняться в Белгороде?</h1>
@@ -233,15 +241,30 @@
     </div>
 
     <script>
-        const places = ["Парк Победы", "Набережная", "Центральный парк", "Сосновка", "Пляж Берега", "Белгородский Арбат"];
-        const actions = ["Прогуляться", "Пикник", "Йога", "Велосипед", "Фрисби", "Ролики"];
-        const placeImages = [
-            "https://example.com/park.jpg",
-            "https://example.com/naberezhnaya.jpg",
-            "https://example.com/centralpark.jpg",
-            "https://example.com/sosnovka.jpg",
-            "https://example.com/beach.jpg",
-            "https://example.com/arbats.jpg"
+        const places = [
+            "Пикник-парк", "Зоопарк", "Набережная Везёлки", "Парк Победы", "Центральный парк", "Пляж «Берега»",
+            "МегаГринн", "СитиМолл", "РИО", "Калейдоскоп", "Сосновка", "Парковка МегаГринна", "Парковка СитиМолла",
+            "Парковка РИО", "Парковка Калейдоскопа", "Архиерейская Роща", "Монастырский Лес", "Парк им. Гагарина",
+            "Скаймека у подъезда", "Пушкинская аллея", "Центральный рынок", "Городская библиотека", "Крейда",
+            "Смотровая площадка", "Рынок Салют", "Белгородский Арбат", "Пляж «Лазурный»", "Пляж «Островок»",
+            "Художественный музей", "Ботанический сад БелГУ", "Любимая кофейня", "Любимый ресторан", "Сквер Дружбы",
+            "Парк Котофей", "Пляж за УСК Хоркиной", "ЛЭП Герб Белгорода", "ЦМИ", "Пруд Болтушка", "Меловые горы",
+            "Парк Дуба", "Автовокзал", "ЖД вокзал", "Ячневский пруд", "Южный парк", "Белгород Арена", "Стометровка",
+            "Любимый кинотеатр", "Южный сквер", "Роллердром", "Уксусное дерево", "Любимая пиццерия",
+            "Спортивная площадка", "Спортивный зал", "Бассейн", "Скейтпарк", "Канатный парк"
+        ];
+
+        const actions = [
+            "Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу",
+            "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон",
+            "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу",
+            "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах",
+            "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке",
+            "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки",
+            "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф",
+            "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих",
+            "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст",
+            "Послушать аудиокнигу"
         ];
 
         const popup = document.getElementById('popup');
@@ -257,19 +280,18 @@
         function openCase() {
             const randomAction = getRandomItem(actions);
             const randomPlace = getRandomItem(places);
-            const randomImageIndex = places.indexOf(randomPlace);
-            const imageUrl = placeImages[randomImageIndex] || "";
             const fullText = `${randomAction} в ${randomPlace}`;
 
-            result.style.opacity = '0';
-            placeImage.style.opacity = '0';
+            result.textContent = "";
+            result.classList.remove('show');
+            placeImage.classList.remove('show');
+            placeImage.src = "";
 
             setTimeout(() => {
                 result.textContent = fullText;
-                placeImage.src = imageUrl;
                 result.classList.add('show');
                 placeImage.classList.add('show');
-            }, 200);
+            }, 100);
         }
 
         const generateBtn = document.getElementById('generateBtn');
@@ -291,4 +313,5 @@
         });
     </script>
 </body>
+
 </html>
