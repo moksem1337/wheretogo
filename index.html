@@ -33,7 +33,7 @@
 
         .wrapper {
             text-align: center;
-            position: relative; /* Добавлено для корректного позиционирования внутри мини-апп */
+            position: relative;
             z-index: 1;
             width: 100%;
             padding: 0 20px;
@@ -52,7 +52,7 @@
         .pulse-arrow {
             position: absolute;
             left: 30%;
-            top: 55%; /* Опущена ниже */
+            top: 55%;
             width: 100px;
             animation: pulse 1.5s infinite;
         }
@@ -97,17 +97,17 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 25px;
+            padding: 30px; /* Увеличен padding для лучшего вида */
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 85%;
+            max-width: 90%; /* Увеличена ширина */
             z-index: 2;
         }
 
         .popup .case-animation {
-            width: 200px;
-            height: 200px;
+            width: 250px; /* Увеличена ширина изображения */
+            height: 250px;
             margin: 0 auto 20px;
             border-radius: 10px;
             display: flex;
@@ -180,7 +180,7 @@
 
             .pulse-arrow {
                 width: 70px;
-                top: 55%; /* Корректировка для мобильных */
+                top: 55%;
                 left: 25%;
             }
 
@@ -237,6 +237,65 @@
 
         const actions = ["Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах", "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"];
 
+        const placeImages = [
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/piknik-park.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/zoo.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/naberezhnaya-vezelki.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/park-pobedy.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/central-park.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/beach-berega.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/megagrinn.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/citymall.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/rio.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/kaleidoskop.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/sosnovka.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/parking-megagrinn.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/parking-citymall.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/parking-rio.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/parking-kaleidoskop.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/arhiarejska-rosha.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/monastyrskij-les.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/park-gagarin.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/skaymeka.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/pushkinskaya-alleya.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/central-market.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/library.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/kreida.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/smotrovaya.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/rynok-salut.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/belgorod-arbat.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/beach-lazurniy.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/beach-ostrovok.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/museum.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/botanical-garden.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/coffee-shop.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/restaurant.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/skver-druzhby.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/park-kotofey.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/beach-horkina.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/lep-gerb.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/tsmi.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/prud-boltushka.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/melovye-gory.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/park-dub.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/avtovokzal.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/jd-vokzal.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/yachnevskij-prud.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/yuzhnyj-park.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/belgorod-arena.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/stometrovka.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/cinema.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/yuzhnyj-skver.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/rollerdrom.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/ukrusnoe-derevo.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/pizzeria.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/sport-ground.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/sport-hall.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/swimming-pool.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/skatepark.jpg",
+            "https://raw.githubusercontent.com/[твой_пользователь]/[твой_репозиторий]/main/images/kanatnyj-park.jpg"
+        ];
+
         const popup = document.getElementById('popup');
         const result = document.getElementById('result');
         const generateMoreBtn = document.getElementById('generateMoreBtn');
@@ -250,6 +309,8 @@
         function openCase() {
             const randomAction = getRandomItem(actions);
             const randomPlace = getRandomItem(places);
+            const randomImageIndex = places.indexOf(randomPlace);
+            const imageUrl = placeImages[randomImageIndex] || "";
             const fullText = `${randomAction} в ${randomPlace}`;
 
             result.textContent = "";
@@ -260,6 +321,7 @@
             setTimeout(() => {
                 result.textContent = fullText;
                 result.classList.add('show');
+                placeImage.src = imageUrl;
                 placeImage.classList.add('show');
             }, 100);
         }
