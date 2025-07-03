@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чем заняться в Белгороде?</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             margin: 0;
@@ -108,8 +108,8 @@
         }
 
         .popup .case-animation {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto 20px;
             border-radius: 10px;
             display: flex;
@@ -138,18 +138,16 @@
             font-weight: 900;
             opacity: 0;
             transition: opacity 0.5s ease;
-            word-wrap: break-word;
-            text-align: center;
         }
 
         .popup p.show {
             opacity: 1;
         }
 
-        .popup .buttons {
+        .popup .button-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            align-items: center;
         }
 
         .popup button {
@@ -159,7 +157,9 @@
             cursor: pointer;
             border: none;
             border-radius: 20px;
+            margin: 5px 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 80%;
         }
 
         .popup button#generateMoreBtn {
@@ -168,6 +168,16 @@
         }
 
         .popup button#generateMoreBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup button#shareBtn {
+            background: linear-gradient(90deg, rgba(255, 165, 0, 0.9) 0%, rgba(255, 190, 0, 0.9) 100%);
+            color: white;
+        }
+
+        .popup button#shareBtn:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
@@ -205,12 +215,12 @@
 
             .popup {
                 padding: 20px;
-                max-width: 90%;
+                max-width: 95%;
             }
 
             .popup .case-animation {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
             }
 
             .popup p {
@@ -224,7 +234,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="wrapper">
         <h1>Чем заняться в Белгороде?</h1>
@@ -238,13 +247,16 @@
             <img src="" alt="Place Image" id="placeImage">
         </div>
         <p id="result"></p>
-        <div class="buttons">
+        <div class="button-group">
             <button id="generateMoreBtn">Сгенерировать ещё</button>
+            <button id="shareBtn">Поделиться</button>
             <button id="closeBtn">Закрыть</button>
         </div>
     </div>
 
     <script>
+        const tg = window.Telegram.WebApp;
+
         const places = ["Пикник-парк", "Зоопарк", "Набережная Везёлки", "Парк Победы", "Центральный парк", "Пляж «Берега»", "МегаГринн", "СитиМолл", "РИО", "Калейдоскоп", "Сосновка", "Парковка МегаГринна", "Парковка СитиМолла", "Парковка РИО", "Парковка Калейдоскопа", "Архиерейская Роща", "Монастырский Лес", "Парк им. Гагарина", "Скаймека у подъезда", "Пушкинская аллея", "Центральный рынок", "Городская библиотека", "Крейда", "Смотровая площадка", "Рынок Салют", "Белгородский Арбат", "Пляж «Лазурный»", "Пляж «Островок»", "Художественный музей", "Ботанический сад БелГУ", "Любимая кофейня", "Любимый ресторан", "Сквер Дружбы", "Парк Котофей", "Пляж за УСК Хоркиной", "ЛЭП Герб Белгорода", "ЦМИ", "Пруд Болтушка", "Меловые горы", "Парк Дуба", "Автовокзал", "ЖД вокзал", "Ячневский пруд", "Южный парк", "Белгород Арена", "Стометровка", "Любимый кинотеатр", "Южный сквер", "Роллердром", "Уксусное дерево", "Любимая пиццерия", "Спортивная площадка", "Спортивный зал", "Бассейн", "Скейтпарк", "Канатный парк"];
 
         const actions = ["Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах", "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"];
@@ -252,6 +264,7 @@
         const popup = document.getElementById('popup');
         const result = document.getElementById('result');
         const generateMoreBtn = document.getElementById('generateMoreBtn');
+        const shareBtn = document.getElementById('shareBtn');
         const closeBtn = document.getElementById('closeBtn');
         const placeImage = document.getElementById('placeImage');
 
@@ -286,6 +299,11 @@
             openCase();
         });
 
+        shareBtn.addEventListener('click', () => {
+            const text = encodeURIComponent(result.textContent);
+            tg.openTelegramLink(`https://t.me/share/url?text=${text}`);
+        });
+
         closeBtn.addEventListener('click', () => {
             popup.style.display = 'none';
             result.textContent = "";
@@ -295,5 +313,4 @@
         });
     </script>
 </body>
-
 </html>
