@@ -123,11 +123,21 @@
             height: 100%;
             object-fit: cover;
             opacity: 0;
-            transition: opacity 0.5s ease-in;
+            animation: fadeIn 0.8s ease-out forwards; /* Анимация */
         }
 
         .popup .case-animation img.show {
             opacity: 1;
+        }
+
+        /* Анимация для плавного появления */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .popup p {
@@ -260,16 +270,18 @@
             const imageUrl = placeImages[0];
             const fullText = `${randomAction} на ${randomPlace}`;
 
+            // Убираем классы и сбрасываем анимацию
             result.textContent = "";
             result.classList.remove('show');
             placeImage.classList.remove('show');
             placeImage.src = "";
+            void placeImage.offsetWidth; // Сброс анимации через reflow
 
             setTimeout(() => {
                 result.textContent = fullText;
                 result.classList.add('show');
                 placeImage.src = imageUrl;
-                placeImage.classList.add('show');
+                placeImage.classList.add('show'); // Анимация запускается заново
             }, 100);
         }
 
@@ -280,7 +292,8 @@
         });
 
         generateMoreBtn.addEventListener('click', () => {
-            openCase();
+            openCase(); // Анимация будет запускаться при каждом нажатии
+            popup.style.display = 'block'; // Убеждаемся, что попап остаётся видимым
         });
 
         closeBtn.addEventListener('click', () => {
