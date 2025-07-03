@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,14 +102,14 @@
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 600px;
             width: 90%;
+            max-width: 500px;
             z-index: 2;
         }
 
         .popup .case-animation {
-            width: 200px;
-            height: 200px;
+            width: 300px;
+            height: 300px;
             margin: 0 auto 20px;
             border-radius: 10px;
             display: flex;
@@ -137,10 +138,18 @@
             font-weight: 900;
             opacity: 0;
             transition: opacity 0.5s ease;
+            word-wrap: break-word;
+            text-align: center;
         }
 
         .popup p.show {
             opacity: 1;
+        }
+
+        .popup .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .popup button {
@@ -150,7 +159,6 @@
             cursor: pointer;
             border: none;
             border-radius: 20px;
-            margin: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -197,13 +205,12 @@
 
             .popup {
                 padding: 20px;
-                max-width: 95%;
-                width: 95%;
+                max-width: 90%;
             }
 
             .popup .case-animation {
-                width: 150px;
-                height: 150px;
+                width: 250px;
+                height: 250px;
             }
 
             .popup p {
@@ -217,6 +224,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <h1>Чем заняться в Белгороде?</h1>
@@ -230,8 +238,10 @@
             <img src="" alt="Place Image" id="placeImage">
         </div>
         <p id="result"></p>
-        <button id="generateMoreBtn">Сгенерировать ещё</button>
-        <button id="closeBtn">Закрыть</button>
+        <div class="buttons">
+            <button id="generateMoreBtn">Сгенерировать ещё</button>
+            <button id="closeBtn">Закрыть</button>
+        </div>
     </div>
 
     <script>
@@ -285,7 +295,5 @@
         });
     </script>
 </body>
-</html>
 
-</body>
 </html>
