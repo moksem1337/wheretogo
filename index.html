@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Чем заняться в Белгороде?</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@900&display=swap" rel="stylesheet">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
             margin: 0;
@@ -103,13 +102,13 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             text-align: center;
             width: 90%;
-            max-width: 500px;
+            max-width: 600px;
             z-index: 2;
         }
 
         .popup .case-animation {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
             margin: 0 auto 20px;
             border-radius: 10px;
             display: flex;
@@ -144,12 +143,6 @@
             opacity: 1;
         }
 
-        .popup .button-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .popup button {
             padding: 12px 25px;
             font-size: 18px;
@@ -157,9 +150,13 @@
             cursor: pointer;
             border: none;
             border-radius: 20px;
-            margin: 5px 0;
+            margin: 5px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block;
             width: 80%;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .popup button#generateMoreBtn {
@@ -168,16 +165,6 @@
         }
 
         .popup button#generateMoreBtn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup button#shareBtn {
-            background: linear-gradient(90deg, rgba(255, 165, 0, 0.9) 0%, rgba(255, 190, 0, 0.9) 100%);
-            color: white;
-        }
-
-        .popup button#shareBtn:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
@@ -215,12 +202,12 @@
 
             .popup {
                 padding: 20px;
-                max-width: 95%;
+                max-width: 90%;
             }
 
             .popup .case-animation {
-                width: 200px;
-                height: 200px;
+                width: 250px;
+                height: 250px;
             }
 
             .popup p {
@@ -247,24 +234,19 @@
             <img src="" alt="Place Image" id="placeImage">
         </div>
         <p id="result"></p>
-        <div class="button-group">
-            <button id="generateMoreBtn">Сгенерировать ещё</button>
-            <button id="shareBtn">Поделиться</button>
-            <button id="closeBtn">Закрыть</button>
-        </div>
+        <button id="generateMoreBtn">Сгенерировать ещё</button>
+        <button id="closeBtn">Закрыть</button>
     </div>
 
     <script>
-        const tg = window.Telegram.WebApp;
-
-        const places = ["Пикник-парк", "Зоопарк", "Набережная Везёлки", "Парк Победы", "Центральный парк", "Пляж «Берега»", "МегаГринн", "СитиМолл", "РИО", "Калейдоскоп", "Сосновка", "Парковка МегаГринна", "Парковка СитиМолла", "Парковка РИО", "Парковка Калейдоскопа", "Архиерейская Роща", "Монастырский Лес", "Парк им. Гагарина", "Скаймека у подъезда", "Пушкинская аллея", "Центральный рынок", "Городская библиотека", "Крейда", "Смотровая площадка", "Рынок Салют", "Белгородский Арбат", "Пляж «Лазурный»", "Пляж «Островок»", "Художественный музей", "Ботанический сад БелГУ", "Любимая кофейня", "Любимый ресторан", "Сквер Дружбы", "Парк Котофей", "Пляж за УСК Хоркиной", "ЛЭП Герб Белгорода", "ЦМИ", "Пруд Болтушка", "Меловые горы", "Парк Дуба", "Автовокзал", "ЖД вокзал", "Ячневский пруд", "Южный парк", "Белгород Арена", "Стометровка", "Любимый кинотеатр", "Южный сквер", "Роллердром", "Уксусное дерево", "Любимая пиццерия", "Спортивная площадка", "Спортивный зал", "Бассейн", "Скейтпарк", "Канатный парк"];
-
+        const places = ["Скамейка"];
         const actions = ["Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах", "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"];
+
+        const placeImages = ["https://a.imgfoto.host/2025/07/03/SKAMEIKA.png"];
 
         const popup = document.getElementById('popup');
         const result = document.getElementById('result');
         const generateMoreBtn = document.getElementById('generateMoreBtn');
-        const shareBtn = document.getElementById('shareBtn');
         const closeBtn = document.getElementById('closeBtn');
         const placeImage = document.getElementById('placeImage');
 
@@ -274,8 +256,9 @@
 
         function openCase() {
             const randomAction = getRandomItem(actions);
-            const randomPlace = getRandomItem(places);
-            const fullText = `${randomAction} в ${randomPlace}`;
+            const randomPlace = places[0];
+            const imageUrl = placeImages[0];
+            const fullText = `${randomAction} на ${randomPlace}`;
 
             result.textContent = "";
             result.classList.remove('show');
@@ -285,6 +268,7 @@
             setTimeout(() => {
                 result.textContent = fullText;
                 result.classList.add('show');
+                placeImage.src = imageUrl;
                 placeImage.classList.add('show');
             }, 100);
         }
@@ -297,11 +281,6 @@
 
         generateMoreBtn.addEventListener('click', () => {
             openCase();
-        });
-
-        shareBtn.addEventListener('click', () => {
-            const text = encodeURIComponent(result.textContent);
-            tg.openTelegramLink(`https://t.me/share/url?text=${text}`);
         });
 
         closeBtn.addEventListener('click', () => {
