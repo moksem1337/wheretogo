@@ -122,22 +122,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards; /* Анимация */
-        }
-
-        .popup .case-animation img.show {
-            opacity: 1;
-        }
-
-        /* Анимация для плавного появления */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            opacity: 1; /* Убрана анимация, opacity теперь сразу 1 */
         }
 
         .popup p {
@@ -389,21 +374,10 @@
             const imageUrl = placeImages[places.indexOf(randomPlace)];
             const fullText = `${randomAction} на ${randomPlace}`;
 
-            // Сбрасываем анимацию и состояние
-            result.textContent = "";
-            result.classList.remove('show');
-            placeImage.classList.remove('show');
-            placeImage.src = "";
-            placeImage.style.animation = 'none'; // Сброс анимации
-            void placeImage.offsetWidth; // Принудительный reflow для перезапуска
-            placeImage.style.animation = ''; // Возвращаем анимацию
-
-            setTimeout(() => {
-                result.textContent = fullText;
-                result.classList.add('show');
-                placeImage.src = imageUrl;
-                placeImage.classList.add('show'); // Запускаем анимацию
-            }, 100);
+            // Устанавливаем сразу без анимации
+            result.textContent = fullText;
+            result.classList.add('show');
+            placeImage.src = imageUrl;
         }
 
         const generateBtn = document.getElementById('generateBtn');
@@ -413,7 +387,7 @@
         });
 
         generateMoreBtn.addEventListener('click', () => {
-            openCase(); // Анимация срабатывает и здесь
+            openCase();
             popup.style.display = 'block';
         });
 
@@ -421,7 +395,6 @@
             popup.style.display = 'none';
             result.textContent = "";
             result.classList.remove('show');
-            placeImage.classList.remove('show');
             placeImage.src = "";
         });
     </script>
