@@ -249,10 +249,129 @@
     </div>
 
     <script>
-        const places = ["Скамейка"];
-        const actions = ["Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах", "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"];
+        const places = [
+            "Пикник-парк",
+            "Зоопарк",
+            "Набережная Везёлки",
+            "Парк Победы",
+            "Центральный парк",
+            "Пляж «Берега»",
+            "МегаГринн",
+            "СитиМолл",
+            "РИО",
+            "Калейдоскоп",
+            "Сосновка",
+            "Парковка МегаГринна",
+            "Парковка СитиМолла",
+            "Парковка РИО",
+            "Парковка Калейдоскопа",
+            "Архиерейская Роща",
+            "Монастырский Лес",
+            "Парк им. Гагарина",
+            "Скаймека у подъезда",
+            "Пушкинская аллея",
+            "Центральный рынок",
+            "Городская библиотека",
+            "Крейда",
+            "Смотровая площадка",
+            "Рынок Салют",
+            "Белгородский Арбат",
+            "Пляж «Лазурный»",
+            "Пляж «Островок»",
+            "Художественный музей",
+            "Ботанический сад БелГУ",
+            "Любимая кофейня",
+            "Любимый ресторан",
+            "Сквер Дружбы",
+            "Парк Котофей",
+            "Пляж за УСК Хоркиной",
+            "ЛЭП Герб Белгорода",
+            "ЦМИ",
+            "Пруд Болтушка",
+            "Меловые горы",
+            "Парк Дуба",
+            "Автовокзал",
+            "ЖД вокзал",
+            "Ячневский пруд",
+            "Южный парк",
+            "Белгород Арена",
+            "Стометровка",
+            "Любимый кинотеатр",
+            "Южный сквер",
+            "Роллердром",
+            "Уксусное дерево",
+            "Любимая пиццерия",
+            "Спортивная площадка",
+            "Спортивный зал",
+            "Бассейн",
+            "Скейтпарк",
+            "Канатный парк",
+            "Замок на пескарьере",
+            "Мост со смайликами"
+        ];
 
-        const placeImages = ["https://a.imgfoto.host/2025/07/03/SKAMEIKA.png"];
+        const placeImages = [
+            "https://a.imgfoto.host/2025/07/04/PIKNIK-PARK.png", // Пикник-парк
+            "https://a.imgfoto.host/2025/07/04/ZOOPARK.png", // Зоопарк
+            "https://a.imgfoto.host/2025/07/04/NABEREZNAY-VEZELKI.png", // Набережная Везёлки
+            "https://a.imgfoto.host/2025/07/04/PARK-POBEDY.png", // Парк Победы
+            "https://a.imgfoto.host/2025/07/04/TENTRALNYI-PARK.png", // Центральный парк
+            "https://a.imgfoto.host/2025/07/04/BEREGA.png", // Пляж «Берега»
+            "https://a.imgfoto.host/2025/07/04/GRINN.png", // МегаГринн
+            "https://a.imgfoto.host/2025/07/04/SITI-MOLL.png", // СитиМолл
+            "https://a.imgfoto.host/2025/07/04/RIO.png", // РИО
+            "https://a.imgfoto.host/2025/07/04/KALEIDOSKOP.png", // Калейдоскоп
+            "https://a.imgfoto.host/2025/07/04/SOSNOVKA.png", // Сосновка
+            "https://a.imgfoto.host/2025/07/04/PARKOVKA-GRINN.png", // Парковка МегаГринна
+            "https://a.imgfoto.host/2025/07/04/PARKOVKA-SITIMOLL.png", // Парковка СитиМолла
+            "https://a.imgfoto.host/2025/07/04/PARKOVKA-RIO.png", // Парковка РИО
+            "https://a.imgfoto.host/2025/07/04/PARKOVKA-KALEIDOSKOP.png", // Парковка Калейдоскопа
+            "https://a.imgfoto.host/2025/07/04/ARKIEREISKAY-ROSA.png", // Архиерейская Роща
+            "https://a.imgfoto.host/2025/07/04/MONASTYRSKII-LES.png", // Монастырский Лес
+            "https://a.imgfoto.host/2025/07/04/PARK-GAGARINA.png", // Парк им. Гагарина
+            "https://a.imgfoto.host/2025/07/04/SKAMEIKA.png", // Скаймека у подъезда (запасной вариант)
+            "https://a.imgfoto.host/2025/07/04/PUSKINSKAY-ALLEY.png", // Пушкинская аллея
+            "https://a.imgfoto.host/2025/07/04/TENTRALNYI-RYNOK.png", // Центральный рынок
+            "https://a.imgfoto.host/2025/07/04/BIBLIOTEKA.png", // Городская библиотека
+            "https://a.imgfoto.host/2025/07/04/KREIDA.png", // Крейда
+            "https://a.imgfoto.host/2025/07/04/SMOTROVAY-PLOSADKA.png", // Смотровая площадка
+            "https://a.imgfoto.host/2025/07/04/RYNOK-SALYT.png", // Рынок Салют
+            "https://a.imgfoto.host/2025/07/04/BELGORODSKII-ARBAT.png", // Белгородский Арбат
+            "https://a.imgfoto.host/2025/07/04/PLYZ-LAZURNYI.png", // Пляж «Лазурный»
+            "https://a.imgfoto.host/2025/07/04/PLYZ-OSTROVOK.png", // Пляж «Островок»
+            "https://a.imgfoto.host/2025/07/04/KUDOZESTVENNYI-MUZEI.png", // Художественный музей
+            "https://a.imgfoto.host/2025/07/04/BOTANICESKII-SAD.png", // Ботанический сад БелГУ
+            "https://a.imgfoto.host/2025/07/04/LETNEE-KAFE.png", // Любимая кофейня
+            "https://a.imgfoto.host/2025/07/04/LYBIMYI-RESTORAN.png", // Любимый ресторан
+            "https://a.imgfoto.host/2025/07/04/SKVER-DRUZBY.png", // Сквер Дружбы
+            "https://a.imgfoto.host/2025/07/04/PARK-KOTOFEI.png", // Парк Котофей
+            "https://a.imgfoto.host/2025/07/04/PLYZ-LEVOBEREZNYI.png", // Пляж за УСК Хоркиной
+            "https://a.imgfoto.host/2025/07/04/LEP.png", // ЛЭП Герб Белгорода
+            "https://a.imgfoto.host/2025/07/04/TMI.png", // ЦМИ
+            "https://a.imgfoto.host/2025/07/04/PRUD-BOLTUSKA.png", // Пруд Болтушка
+            "https://a.imgfoto.host/2025/07/04/MELOVYE-GORY.png", // Меловые горы
+            "https://a.imgfoto.host/2025/07/04/PARK-DUBA.png", // Парк Дуба
+            "https://a.imgfoto.host/2025/07/04/AVTOVOKZAL.png", // Автовокзал
+            "https://a.imgfoto.host/2025/07/04/ZD-VOKZAL.png", // ЖД вокзал
+            "https://a.imgfoto.host/2025/07/04/YCNEVSKII-PRUD.png", // Ячневский пруд
+            "https://a.imgfoto.host/2025/07/04/TENTRALNYI-PARK.png", // Южный парк (запасной вариант)
+            "https://a.imgfoto.host/2025/07/04/BELGOROD-ARENA.png", // Белгород Арена
+            "https://a.imgfoto.host/2025/07/04/STOMETROVKA.png", // Стометровка
+            "https://a.imgfoto.host/2025/07/04/LYBIMYI-KINOTEATR.png", // Любимый кинотеатр
+            "https://a.imgfoto.host/2025/07/04/SKVER-DRUZBY.png", // Южный сквер (запасной вариант)
+            "https://a.imgfoto.host/2025/07/04/ROLLERDROM.png", // Роллердром
+            "https://a.imgfoto.host/2025/07/04/UKSUSNOE-DEREVO.png", // Уксусное дерево
+            "https://a.imgfoto.host/2025/07/04/LYBIMAY-PITTERIY.png", // Любимая пиццерия
+            "https://a.imgfoto.host/2025/07/04/SPORTIVNAY-PLOSADKA.png", // Спортивная площадка
+            "https://a.imgfoto.host/2025/07/04/SPORTIVNYI-ZAL.png", // Спортивный зал
+            "https://a.imgfoto.host/2025/07/04/BASSEIN.png", // Бассейн
+            "https://a.imgfoto.host/2025/07/04/SKEITPARK.png", // Скейтпарк
+            "https://a.imgfoto.host/2025/07/04/KANATNYI-PARK.png", // Канатный парк
+            "https://a.imgfoto.host/2025/07/04/ZAMOK.png", // Замок на пескарьере
+            "https://a.imgfoto.host/2025/07/04/MOST-S-SMAILIKAMI.png" // Мост со смайликами
+        ];
+
+        const actions = ["Сделать селфи", "Почитать книгу", "Попрыгать на скакалке", "Прокатиться на велосипеде", "Устроить утреннюю йогу", "Устроить пикник", "Прогуляться", "Прокатиться на самокате", "Покормить птиц", "Сыграть в бадминтон", "Позагорать", "Понаблюдать за облаками", "Потанцевать на улице", "Написать записку незнакомцу", "Посмотреть на закат", "Поиграть в фрисби", "Поиграть в волейбол", "Снять таймлапс", "Прокатиться на роликах", "Прокатиться на скейте", "Пройти 10 000 шагов", "Завести беседу с незнакомцем", "Купить сувенир на рынке", "Снять забавный рилс", "Поиграть в настольные игры", "Попробовать новый спорт", "Поиграть в прятки", "Устроить чаепитие", "Устроить забег", "Сходить на утреннюю пробежку", "Сыграть в мини-гольф", "Запустить бумажный самолетик", "Помедитировать", "Прочесть вслух любимый стих", "Послушать грустный плейлист", "Послушать весёлый плейлист", "Послушать любимый подкаст", "Послушать аудиокнигу"];
 
         const popup = document.getElementById('popup');
         const result = document.getElementById('result');
@@ -266,22 +385,24 @@
 
         function openCase() {
             const randomAction = getRandomItem(actions);
-            const randomPlace = places[0];
-            const imageUrl = placeImages[0];
+            const randomPlace = getRandomItem(places);
+            const imageUrl = placeImages[places.indexOf(randomPlace)];
             const fullText = `${randomAction} на ${randomPlace}`;
 
-            // Убираем классы и сбрасываем анимацию
+            // Сбрасываем анимацию и состояние
             result.textContent = "";
             result.classList.remove('show');
             placeImage.classList.remove('show');
             placeImage.src = "";
-            void placeImage.offsetWidth; // Сброс анимации через reflow
+            placeImage.style.animation = 'none'; // Сброс анимации
+            void placeImage.offsetWidth; // Принудительный reflow для перезапуска
+            placeImage.style.animation = ''; // Возвращаем анимацию
 
             setTimeout(() => {
                 result.textContent = fullText;
                 result.classList.add('show');
                 placeImage.src = imageUrl;
-                placeImage.classList.add('show'); // Анимация запускается заново
+                placeImage.classList.add('show'); // Запускаем анимацию
             }, 100);
         }
 
@@ -292,8 +413,8 @@
         });
 
         generateMoreBtn.addEventListener('click', () => {
-            openCase(); // Анимация будет запускаться при каждом нажатии
-            popup.style.display = 'block'; // Убеждаемся, что попап остаётся видимым
+            openCase(); // Анимация срабатывает и здесь
+            popup.style.display = 'block';
         });
 
         closeBtn.addEventListener('click', () => {
